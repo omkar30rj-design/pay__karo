@@ -62,13 +62,18 @@ It helps users **pay smarter, spend smarter, and live greener.**
 ## Project Structure
 ## 📱Screenshots
 
-![Home Screen](screenshots/home.jpeg)
-![Insights](screenshots/insights.jpeg)
-![Split Payment](screenshots/split.jpeg)
-![Send Money](screenshots/payment.jpeg)
-![Carbon Tracker](screenshots/carbon.jpeg)
+## 📱 Screenshots
 
+<p align="center">
+  <img src="screenshots/home.jpeg" width="220">
+  <img src="screenshots/payment.jpeg" width="220">
+  <img src="screenshots/split.jpeg" width="220">
+</p>
 
+<p align="center">
+  <img src="screenshots/insights.jpeg" width="220">
+  <img src="screenshots/carbon.jpeg" width="220">
+</p>
 
 
 
