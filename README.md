@@ -59,8 +59,6 @@ It helps users **pay smarter, spend smarter, and live greener.**
 ![Architecture](screenshots/architecture.png)
 
 
-## Project Structure
-## 📱Screenshots
 
 ## 📱 Screenshots
 
