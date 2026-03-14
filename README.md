@@ -4,7 +4,9 @@
 PAY KARO is a next-generation UPI-powered fintech mobile application designed to simplify digital payments while providing deep financial insights and environmental impact tracking.
 
 Unlike traditional payment apps, PAY KARO helps users understand spending behavior, manage shared expenses, and measure the carbon footprint of their purchases
-## PROBLEM:
+## 🚨PROBLEM:
+Today’s payment apps allow transactions but fail to help users:
+
 
  -  Understand where their money goes  
 
@@ -75,7 +77,7 @@ It helps users **pay smarter, spend smarter, and live greener.**
 
 
 
-## Tech Stack
+## 🛠 Tech Stack
 
 **Frontend:** Flutter
 
@@ -110,7 +112,7 @@ flutter pub get
 flutter run
 
 
-## Authors
+## 👨‍💻Authors
 
 - team_ShadowX
 
