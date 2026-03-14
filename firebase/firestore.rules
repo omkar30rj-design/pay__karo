@@ -1,0 +1,61 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Users ──────────────────────────────────────────
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+
+      // Frequent contacts subcollection
+      match /frequentContacts/{contactId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // ── Transactions ───────────────────────────────────
+    match /transactions/{txnId} {
+      allow read: if request.auth != null
+        && resource.data.userId == request.auth.uid;
+      allow create: if false; // Only backend can create transactions
+      allow update, delete: if false;
+    }
+
+    // ── Splits ─────────────────────────────────────────
+    match /splits/{splitId} {
+      allow read: if request.auth != null
+        && request.auth.uid in resource.data.members.map(m => m.uid);
+      allow create: if request.auth != null;
+      allow update: if request.auth != null
+        && request.auth.uid in resource.data.members.map(m => m.uid);
+      allow delete: if request.auth != null
+        && resource.data.createdByUid == request.auth.uid;
+    }
+
+    // ── Monthly Spending ───────────────────────────────
+    match /monthlySpending/{docId} {
+      allow read: if request.auth != null
+        && resource.data.userId == request.auth.uid;
+      allow write: if false; // Backend-only writes
+    }
+
+    // ── Groups ─────────────────────────────────────────
+    match /groups/{groupId} {
+      allow read: if request.auth != null
+        && request.auth.uid in resource.data.memberUids;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null
+        && resource.data.createdByUid == request.auth.uid;
+      allow delete: if request.auth != null
+        && resource.data.createdByUid == request.auth.uid;
+    }
+
+    // ── Payment Requests ───────────────────────────────
+    match /paymentRequests/{reqId} {
+      allow read: if request.auth != null
+        && (resource.data.requestedByUid == request.auth.uid);
+      allow create: if request.auth != null;
+      allow update: if false;
+    }
+  }
+}
